@@ -2,6 +2,8 @@
 
 A bash utility for managing [Nerd Fonts](https://www.nerdfonts.com/) on macOS via Homebrew casks. Features both CLI (fzf) and GUI (macOS dialogs) interfaces.
 
+![Demo](demo.gif)
+
 ## Prerequisites
 
 - macOS
