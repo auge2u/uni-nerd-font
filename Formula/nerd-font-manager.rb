@@ -13,6 +13,7 @@ class NerdFontManager < Formula
     bin.install "nerd-font-manager.sh" => "nerd-font-manager"
     zsh_completion.install "completions/_nerd-font-manager"
     bash_completion.install "completions/nerd-font-manager.bash"
+    fish_completion.install "completions/nerd-font-manager.fish"
   end
 
   test do

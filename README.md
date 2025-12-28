@@ -50,6 +50,11 @@ autoload -Uz compinit && compinit
 source /path/to/uni-nerd-font/completions/nerd-font-manager.bash
 ```
 
+**Fish** - Copy to completions directory:
+```fish
+cp /path/to/uni-nerd-font/completions/nerd-font-manager.fish ~/.config/fish/completions/
+```
+
 Then restart your shell or source the config file.
 
 ## Usage
