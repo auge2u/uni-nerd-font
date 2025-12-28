@@ -12,6 +12,15 @@ A bash utility for managing [Nerd Fonts](https://www.nerdfonts.com/) on macOS vi
 
 ## Installation
 
+### Homebrew (Recommended)
+
+```bash
+brew tap auge2u/uni-nerd-font https://github.com/auge2u/uni-nerd-font
+brew install nerd-font-manager
+```
+
+### Manual
+
 ```bash
 # Clone the repository
 git clone https://github.com/auge2u/uni-nerd-font.git
@@ -25,6 +34,8 @@ ln -s "$(pwd)/nerd-font-manager.sh" /usr/local/bin/nerd-font-manager
 ```
 
 ### Shell Completions
+
+Homebrew installation automatically sets up completions. For manual installs:
 
 **Zsh** - Add to `~/.zshrc`:
 ```bash
