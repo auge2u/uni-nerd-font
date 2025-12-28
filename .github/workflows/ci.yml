@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-formula:
+    name: Test Homebrew Formula
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install formula from local tap
+        run: |
+          brew tap auge2u/uni-nerd-font "$PWD"
+          brew install nerd-font-manager
+
+      - name: Test formula
+        run: brew test nerd-font-manager
+
+      - name: Verify installation
+        run: |
+          nerd-font-manager --help
+          which nerd-font-manager
+
+  test-script:
+    name: Test Script Directly
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install fzf
+        run: brew install fzf
+
+      - name: Make script executable
+        run: chmod +x nerd-font-manager.sh
+
+      - name: Test help flag
+        run: ./nerd-font-manager.sh --help
+
+      - name: Test syntax
+        run: bash -n nerd-font-manager.sh
+
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: '.'
+          ignore_paths: 'completions'
