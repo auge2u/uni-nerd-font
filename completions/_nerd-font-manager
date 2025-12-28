@@ -1,0 +1,19 @@
+#compdef nerd-font-manager nerd-font-manager.sh
+
+# Zsh completion for nerd-font-manager
+# Install: Add completions directory to fpath in .zshrc
+#   fpath=(/path/to/uni-nerd-font/completions $fpath)
+#   autoload -Uz compinit && compinit
+
+_nerd-font-manager() {
+    local -a options
+    options=(
+        '(-c --cli)'{-c,--cli}'[Run in CLI mode with fzf (default)]'
+        '(-g --gui)'{-g,--gui}'[Run in GUI mode with macOS dialogs]'
+        '(-h --help)'{-h,--help}'[Show help message]'
+    )
+
+    _arguments -s $options
+}
+
+_nerd-font-manager "$@"
