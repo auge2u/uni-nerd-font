@@ -128,7 +128,7 @@ cli_mode() {
 
       # Add [ALL] option and enable search with header hint
       local SELECTED
-      SELECTED=$(printf "[ALL] Install all fonts\n%s\n" $FONTS | fzf --multi --prompt="Install (type to filter) > " --header="Select fonts (TAB to multi-select, ENTER to confirm)")
+      SELECTED=$(echo -e "[ALL] Install all fonts\n$FONTS" | fzf --multi --prompt="Install (type to filter) > " --header="Select fonts (TAB to multi-select, ENTER to confirm)")
 
       if [ -z "$SELECTED" ]; then
         echo "Nothing selected."
@@ -140,7 +140,7 @@ cli_mode() {
         echo "Installing ALL available Nerd Fonts..."
         mapfile -t names <<< "$FONTS"
       else
-        mapfile -t names <<< "$(printf "%s\n" $SELECTED)"
+        mapfile -t names <<< "$SELECTED"
       fi
       install_fonts_by_middle_names "${names[@]}"
       ;;
@@ -156,7 +156,7 @@ cli_mode() {
 
       # Add [ALL] option and enable search with header hint
       local SELECTED
-      SELECTED=$(printf "[ALL] Uninstall all fonts\n%s\n" $FONTS | fzf --multi --prompt="Uninstall (type to filter) > " --header="Select fonts (TAB to multi-select, ENTER to confirm)")
+      SELECTED=$(echo -e "[ALL] Uninstall all fonts\n$FONTS" | fzf --multi --prompt="Uninstall (type to filter) > " --header="Select fonts (TAB to multi-select, ENTER to confirm)")
 
       if [ -z "$SELECTED" ]; then
         echo "Nothing selected."
@@ -168,7 +168,7 @@ cli_mode() {
         echo "Uninstalling ALL installed Nerd Fonts..."
         mapfile -t names <<< "$FONTS"
       else
-        mapfile -t names <<< "$(printf "%s\n" $SELECTED)"
+        mapfile -t names <<< "$SELECTED"
       fi
       uninstall_fonts_by_middle_names "${names[@]}"
       ;;
@@ -220,12 +220,11 @@ gui_mode() {
 
       # Optional search filter
       local SEARCH
-      SEARCH=$(osascript <<EOF
+      if ! SEARCH=$(osascript <<EOF
 display dialog "Enter search term (leave empty for all fonts):" default answer "" with title "Filter Fonts" buttons {"Cancel", "Search"} default button "Search"
 text returned of result
 EOF
-)
-      if [ $? -ne 0 ]; then
+); then
         exit 0
       fi
 
@@ -276,12 +275,11 @@ EOF
 
       # Optional search filter
       local SEARCH
-      SEARCH=$(osascript <<EOF
+      if ! SEARCH=$(osascript <<EOF
 display dialog "Enter search term (leave empty for all fonts):" default answer "" with title "Filter Fonts" buttons {"Cancel", "Search"} default button "Search"
 text returned of result
 EOF
-)
-      if [ $? -ne 0 ]; then
+); then
         exit 0
       fi
 
