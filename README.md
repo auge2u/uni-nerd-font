@@ -1,5 +1,7 @@
 # Nerd Font Manager
 
+[![CI](https://github.com/auge2u/uni-nerd-font/actions/workflows/ci.yml/badge.svg)](https://github.com/auge2u/uni-nerd-font/actions/workflows/ci.yml)
+
 A bash utility for managing [Nerd Fonts](https://www.nerdfonts.com/) on macOS via Homebrew casks. Features both CLI (fzf) and GUI (macOS dialogs) interfaces.
 
 ![Demo](demo.gif)
