@@ -1,9 +1,9 @@
 class NerdFontManager < Formula
   desc "CLI and GUI utility for managing Nerd Fonts on macOS via Homebrew"
   homepage "https://github.com/auge2u/uni-nerd-font"
-  url "https://github.com/auge2u/uni-nerd-font/archive/refs/tags/v1.0.1.tar.gz"
-  sha256 "6f5c0159fffa670543bd07ba9016002148579ce430eba84446b43f763b9561d5"
-  version "1.0.1"
+  url "https://github.com/auge2u/uni-nerd-font/archive/refs/tags/v1.0.2.tar.gz"
+  sha256 "91d8bbe3fb77e9e45ec6243daec1d04ade7588a958b1078c6dfc5044193b0995"
+  version "1.0.2"
   license "MIT"
 
   depends_on "fzf" => :recommended
