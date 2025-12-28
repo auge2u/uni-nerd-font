@@ -24,17 +24,20 @@ chmod +x nerd-font-manager.sh
 ln -s "$(pwd)/nerd-font-manager.sh" /usr/local/bin/nerd-font-manager
 ```
 
-### Zsh Completions
+### Shell Completions
 
-Add to your `~/.zshrc`:
-
+**Zsh** - Add to `~/.zshrc`:
 ```bash
-# Add completions to fpath
 fpath=(/path/to/uni-nerd-font/completions $fpath)
 autoload -Uz compinit && compinit
 ```
 
-Then restart your shell or run `source ~/.zshrc`.
+**Bash** - Add to `~/.bashrc` or `~/.bash_profile`:
+```bash
+source /path/to/uni-nerd-font/completions/nerd-font-manager.bash
+```
+
+Then restart your shell or source the config file.
 
 ## Usage
 
