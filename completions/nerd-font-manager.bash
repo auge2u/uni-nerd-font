@@ -6,7 +6,7 @@ _nerd_font_manager() {
     local cur opts
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
-    opts="--cli -c --gui -g --help -h"
+    opts="--cli -c --gui -g --version -v --list-installed -l --list-available -a --help -h"
 
     if [[ ${cur} == -* ]]; then
         COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )

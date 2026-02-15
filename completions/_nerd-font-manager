@@ -10,6 +10,9 @@ _nerd-font-manager() {
     options=(
         '(-c --cli)'{-c,--cli}'[Run in CLI mode with fzf (default)]'
         '(-g --gui)'{-g,--gui}'[Run in GUI mode with macOS dialogs]'
+        '(-v --version)'{-v,--version}'[Show version]'
+        '(-l --list-installed)'{-l,--list-installed}'[List installed Nerd Fonts]'
+        '(-a --list-available)'{-a,--list-available}'[List available Nerd Fonts]'
         '(-h --help)'{-h,--help}'[Show help message]'
     )
 

@@ -4,6 +4,7 @@
 # Config
 # =============================
 
+VERSION="1.0.3"
 LOG_FILE="$HOME/.nerd-font-manager.log"
 
 # Updated favorites (8 fonts)
@@ -28,15 +29,7 @@ log_event() {
   echo "$(date '+%Y-%m-%d %H:%M:%S') | $action | $font" >> "$LOG_FILE"
 }
 
-ensure_fonts_tap() {
-  if ! brew tap | grep -q "^homebrew/cask-fonts$"; then
-    echo "Adding Homebrew tap: homebrew/cask-fonts"
-    brew tap homebrew/cask-fonts
-  fi
-}
-
 get_available_fonts() {
-  ensure_fonts_tap
   brew search --casks nerd-font | grep "font-.*-nerd-font"
 }
 
@@ -348,11 +341,35 @@ main() {
     --cli|-c|"")
       cli_mode
       ;;
+    --version|-v)
+      echo "nerd-font-manager $VERSION"
+      ;;
+    --list-installed|-l)
+      local installed
+      installed=$(get_installed_fonts)
+      if [ -z "$installed" ]; then
+        echo "No Nerd Fonts installed."
+      else
+        echo "$installed"
+      fi
+      ;;
+    --list-available|-a)
+      local available
+      available=$(get_available_fonts)
+      if [ -z "$available" ]; then
+        echo "No Nerd Fonts found."
+      else
+        echo "$available"
+      fi
+      ;;
     --help|-h)
-      echo "Usage: $0 [--cli|-c] [--gui|-g] [--help|-h]"
-      echo "  --cli, -c   Run in CLI mode with fzf (default)"
-      echo "  --gui, -g   Run in GUI mode with macOS dialogs"
-      echo "  --help, -h  Show this help message"
+      echo "Usage: $0 [--cli|-c] [--gui|-g] [--help|-h] [--version|-v]"
+      echo "  --cli, -c              Run in CLI mode with fzf (default)"
+      echo "  --gui, -g              Run in GUI mode with macOS dialogs"
+      echo "  --version, -v          Show version"
+      echo "  --list-installed, -l   List installed Nerd Fonts"
+      echo "  --list-available, -a   List available Nerd Fonts"
+      echo "  --help, -h             Show this help message"
       ;;
     *)
       echo "Unknown option: $1"

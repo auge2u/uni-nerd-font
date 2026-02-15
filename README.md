@@ -12,6 +12,8 @@ A bash utility for managing [Nerd Fonts](https://www.nerdfonts.com/) on macOS vi
 - [Homebrew](https://brew.sh/)
 - [fzf](https://github.com/junegunn/fzf) (for CLI mode): `brew install fzf`
 
+> **Note:** As of Homebrew 4.3.0, all font casks (previously in `homebrew/cask-fonts`) are now part of the main `homebrew/cask` repository. No additional tap is needed for fonts.
+
 ## Installation
 
 ### Homebrew (Recommended)
@@ -65,6 +67,15 @@ Then restart your shell or source the config file.
 
 # GUI mode - macOS native dialogs
 ./nerd-font-manager.sh --gui
+
+# Show version
+./nerd-font-manager.sh --version
+
+# List installed Nerd Fonts
+./nerd-font-manager.sh --list-installed
+
+# List available Nerd Fonts
+./nerd-font-manager.sh --list-available
 
 # Show help
 ./nerd-font-manager.sh --help
